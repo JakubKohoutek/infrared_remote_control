@@ -31,3 +31,8 @@ It uses two modes
 
 * **Interrupt mode** - in this mode, all buttons are connected to an interrupt pin (set as `INPUT_PULLUP`) on one side and to their own individual pins on other side (set all as `OUTPUT` to `LOW`). After this configuration is set, Arduino enters the sleep mode and waits for a button press. Once any button is pressed, interrupt pin is set to `LOW`, sleep mode is terminated and Arduino rewires internally to distinct mode.
 * **Distinct mode** - in this mode, interrupt is detached from an interrupt pin and the pin is reconfigured to `OUTPUT` and set to `LOW`, while all button pins are changed to `INPUT_PULLUP`. In this configuration we can easily find out what button has been pressed and send the corresponding code.
+
+## The Finished Product
+
+![](finished_product.jpg)
+![](finished_product_backside.jpg)
