@@ -4,7 +4,7 @@ This repository contains circuit diagram and code for low power infrared remote 
 
 ## Circuit Diagram
 
-![](circuit_diagram.png)
+![](images/circuit_diagram.png)
 
 ## Adjustments To Minimize Power Consumption
 
@@ -34,5 +34,5 @@ It uses two modes
 
 ## The Finished Product
 
-![](finished_product.jpg)
-![](finished_product_backside.jpg)
+![](images/finished_product.jpg)
+![](images/finished_product_backside.jpg)
