@@ -1,5 +1,5 @@
-#include <IRremote.h>     // library by shirriff, https://github.com/z3t0/Arduino-IRremote => uses pin D3
-#include "LowPower.h"     // library by rocketscream, https://github.com/rocketscream/Low-Power
+#include "SendMitsubishiCode.h" // custom extension of https://github.com/z3t0/Arduino-IRremote => uses pin D3
+#include "LowPower.h"           // library by rocketscream, https://github.com/rocketscream/Low-Power
 
 // Codes for IR remote control
 #define CODE_WIN          0x2F9C
@@ -13,8 +13,6 @@ const auto WAKEUP_FUNCTION = [](void){/* Do nothing, just wake up */};
 const int  BUTTON_CODES[]  = {CODE_WIN, CODE_HDMI, CODE_OFF, CODE_ON, CODE_DPORT, CODE_DVI};
 const int  BUTTON_PINS[]   = {7,        8,         9,        10,      11,         12      };
 const int  INTERRUPT_PIN   = 2;
-
-IRsend irsend;
 
 void setup() {
   Serial.begin(9600);
@@ -35,7 +33,7 @@ void loop() {
   for (int i = 0; i < sizeof(BUTTON_PINS) / sizeof(int); i++) { 
     if (digitalRead(BUTTON_PINS[i]) == LOW) {
       Serial.println(BUTTON_CODES[i], HEX);
-      irsend.sendNEC(BUTTON_CODES[i], 32);
+      sendMitsubishiCode(BUTTON_CODES[i]);
 
       while(digitalRead(BUTTON_PINS[i]) == LOW) {
         delay(100);
