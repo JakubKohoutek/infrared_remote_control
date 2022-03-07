@@ -6,7 +6,50 @@
 #define MITSUBISHI_ZERO_SPACE 474U
 #define MITSUBISHI_ONE_SPACE  1474U
 
+#define SETTINGS_MENU    0x20DFC23D
+#define OK               0x20DF22DD
+#define DOWN             0x20DF827D
+#define UP               0x20DF02FD
+#define BACK             0x20DFE01F
+#define GAP              200
+
 IRsend irsend;
+
+void dimMonitor() {
+  irsend.sendNEC(SETTINGS_MENU, 32);
+  delay(GAP);
+  irsend.sendNEC(OK, 32);
+  delay(GAP);
+  irsend.sendNEC(OK, 32);
+  delay(GAP);
+  irsend.sendNEC(DOWN, 32);
+  delay(GAP);
+  irsend.sendNEC(DOWN, 32);
+  delay(GAP);
+  irsend.sendNEC(OK, 32);
+  delay(GAP);
+  irsend.sendNEC(BACK, 32);
+  delay(GAP);
+  irsend.sendNEC(BACK, 32);
+}
+
+void brightenMonitor() {
+  irsend.sendNEC(SETTINGS_MENU, 32);
+  delay(GAP);
+  irsend.sendNEC(OK, 32);
+  delay(GAP);
+  irsend.sendNEC(OK, 32);
+  delay(GAP);
+  irsend.sendNEC(UP, 32);
+  delay(GAP);
+  irsend.sendNEC(UP, 32);
+  delay(GAP);
+  irsend.sendNEC(OK, 32);
+  delay(GAP);
+  irsend.sendNEC(BACK, 32);
+  delay(GAP);
+  irsend.sendNEC(BACK, 32);
+}
 
 void sendMitsubishiCode (unsigned long data, int nbits, int repeat){
   // Set IR carrier frequency

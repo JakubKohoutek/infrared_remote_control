@@ -33,7 +33,17 @@ void loop() {
   for (int i = 0; i < sizeof(BUTTON_PINS) / sizeof(int); i++) { 
     if (digitalRead(BUTTON_PINS[i]) == LOW) {
       Serial.println(BUTTON_CODES[i], HEX);
-      sendMitsubishiCode(BUTTON_CODES[i]);
+
+      switch (BUTTON_PINS[i]) {
+        case 9:
+          dimMonitor();
+          break;
+        case 10:
+          brightenMonitor();
+          break;
+        default:
+          sendMitsubishiCode(BUTTON_CODES[i]);
+      }
 
       while(digitalRead(BUTTON_PINS[i]) == LOW) {
         delay(100);

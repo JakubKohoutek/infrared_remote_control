@@ -11,3 +11,6 @@ void sendMitsubishiCode (
   int           nbits  = MITSUBISHI_DEFAULT_BITS,
   int           repeat = MITSUBISHI_DEFAULT_REPEAT
 );
+
+void dimMonitor ();
+void brightenMonitor ();
